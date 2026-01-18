@@ -1,12 +1,5 @@
 {
   "name": "tldr",
   "version": "1.0.0",
-  "description": "TLDR code analysis integration - 95% fewer tokens for codebase understanding",
-  "skills": [
-    {
-      "name": "tldr",
-      "path": "skills/tldr.md",
-      "description": "Use TLDR for efficient code analysis: semantic search, impact analysis, program slicing, and LLM-ready context generation. Invoke when exploring codebases, debugging, refactoring, or needing to understand code relationships."
-    }
-  ]
+  "description": "TLDR code analysis integration - 95% fewer tokens for codebase understanding"
 }

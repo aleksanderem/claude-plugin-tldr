@@ -199,7 +199,8 @@ Or run TLDR commands directly in the terminal.
     ├── .claude-plugin/
     │   └── plugin.json              # Plugin manifest
     └── skills/
-        └── tldr.md                  # Skill documentation
+        └── tldr/
+            └── SKILL.md             # Skill documentation
 ```
 
 ## Troubleshooting
