@@ -110,7 +110,7 @@ Add to your `~/.claude/settings.json` or `.claude/settings.json`:
   "hooks": {
     "SessionStart": [
       {
-        "matcher": {},
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
@@ -122,7 +122,7 @@ Add to your `~/.claude/settings.json` or `.claude/settings.json`:
     ],
     "PreToolUse": [
       {
-        "matcher": { "tools": ["Read", "Task"] },
+        "matcher": "Read|Task",
         "hooks": [
           {
             "type": "command",
@@ -134,7 +134,7 @@ Add to your `~/.claude/settings.json` or `.claude/settings.json`:
     ],
     "PostToolUse": [
       {
-        "matcher": { "tools": ["Edit", "Write"] },
+        "matcher": "Edit|Write",
         "hooks": [
           {
             "type": "command",

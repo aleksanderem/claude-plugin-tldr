@@ -249,7 +249,7 @@ Register hooks in `.claude/settings.json`:
   "hooks": {
     "SessionStart": [
       {
-        "matcher": {},
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
@@ -261,7 +261,7 @@ Register hooks in `.claude/settings.json`:
     ],
     "PreToolUse": [
       {
-        "matcher": { "tools": ["Read", "Task"] },
+        "matcher": "Read|Task",
         "hooks": [
           {
             "type": "command",
@@ -273,7 +273,7 @@ Register hooks in `.claude/settings.json`:
     ],
     "PostToolUse": [
       {
-        "matcher": { "tools": ["Edit", "Write"] },
+        "matcher": "Edit|Write",
         "hooks": [
           {
             "type": "command",
