@@ -196,7 +196,8 @@ Or run TLDR commands directly in the terminal.
 │   │   └── post-edit-diagnostics.ts # PostToolUse hook
 │   └── dist/                        # Compiled JavaScript (after build)
 └── plugins/tldr/
-    ├── plugin.json                  # Plugin manifest
+    ├── .claude-plugin/
+    │   └── plugin.json              # Plugin manifest
     └── skills/
         └── tldr.md                  # Skill documentation
 ```
