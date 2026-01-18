@@ -247,15 +247,42 @@ Register hooks in `.claude/settings.json`:
 ```json
 {
   "hooks": {
-    "SessionStart": ["node .claude/hooks/dist/session-start.js"],
-    "PreToolUse": {
-      "Read": ["node .claude/hooks/dist/context-inject.js"],
-      "Edit": ["node .claude/hooks/dist/edit-context.js"]
-    },
-    "PostToolUse": {
-      "Edit": ["node .claude/hooks/dist/post-edit.js"],
-      "Write": ["node .claude/hooks/dist/post-edit.js"]
-    }
+    "SessionStart": [
+      {
+        "matcher": {},
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/dist/session-start.js",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": { "tools": ["Read", "Task"] },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/dist/context-inject.js",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": { "tools": ["Edit", "Write"] },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/dist/post-edit-diagnostics.js",
+            "timeout": 30000
+          }
+        ]
+      }
+    ]
   }
 }
 ```

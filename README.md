@@ -110,38 +110,40 @@ Add to your `~/.claude/settings.json` or `.claude/settings.json`:
   "hooks": {
     "SessionStart": [
       {
-        "command": "node .claude/hooks/dist/session-start.js",
-        "timeout": 30000
+        "matcher": {},
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/dist/session-start.js",
+            "timeout": 30000
+          }
+        ]
       }
     ],
-    "PreToolUse": {
-      "Read": [
-        {
-          "command": "node .claude/hooks/dist/context-inject.js",
-          "timeout": 10000
-        }
-      ],
-      "Task": [
-        {
-          "command": "node .claude/hooks/dist/context-inject.js",
-          "timeout": 10000
-        }
-      ]
-    },
-    "PostToolUse": {
-      "Edit": [
-        {
-          "command": "node .claude/hooks/dist/post-edit-diagnostics.js",
-          "timeout": 30000
-        }
-      ],
-      "Write": [
-        {
-          "command": "node .claude/hooks/dist/post-edit-diagnostics.js",
-          "timeout": 30000
-        }
-      ]
-    }
+    "PreToolUse": [
+      {
+        "matcher": { "tools": ["Read", "Task"] },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/dist/context-inject.js",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": { "tools": ["Edit", "Write"] },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/dist/post-edit-diagnostics.js",
+            "timeout": 30000
+          }
+        ]
+      }
+    ]
   },
   "mcpServers": {
     "tldr": {
