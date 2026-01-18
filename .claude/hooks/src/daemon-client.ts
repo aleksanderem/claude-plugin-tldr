@@ -1,4 +1,4 @@
-import { execFileSync, spawnSync } from 'child_process';
+import { execFileSync, spawn } from 'child_process';
 import { existsSync } from 'fs';
 import { createHash } from 'crypto';
 
@@ -25,15 +25,21 @@ function isDaemonRunning(projectDir: string): boolean {
   return existsSync(socketPath);
 }
 
+function sleep(ms: number): void {
+  const end = Date.now() + ms;
+  while (Date.now() < end) { /* busy wait */ }
+}
+
 function startDaemon(projectDir: string): boolean {
   try {
-    spawnSync('tldr', ['daemon', 'start'], {
+    const child = spawn('tldr', ['daemon', 'start'], {
       cwd: projectDir,
       stdio: 'ignore',
       detached: true
     });
+    child.unref();
     // Wait briefly for daemon to initialize
-    spawnSync('sleep', ['0.5']);
+    sleep(500);
     return isDaemonRunning(projectDir);
   } catch {
     return false;
