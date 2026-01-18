@@ -1,0 +1,15 @@
+{
+  "name": "claude-plugin-tldr",
+  "description": "TLDR code analysis plugin marketplace",
+  "owner": {
+    "name": "aleksanderem"
+  },
+  "plugins": [
+    {
+      "name": "tldr",
+      "source": "./",
+      "description": "TLDR code analysis - 95% fewer tokens for codebase understanding",
+      "version": "1.0.0"
+    }
+  ]
+}
